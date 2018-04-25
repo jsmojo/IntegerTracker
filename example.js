@@ -8,6 +8,7 @@ class IntegerTracker {
         this.largest = 0;
         this.frequent = 0;
         this.mean = 0;
+        this.total = 0;
     }
 
     track(int) {
@@ -16,9 +17,10 @@ class IntegerTracker {
             this.frequent = this.obj[int];
             this.largest = int;
         }
+        this.total += int;
         this.collection.push(int);
         this.collection.sort();
-        this.mean = this.collection.reduce((sum, el) => sum + el, 0) / this.collection.length;
+        this.mean = this.total / this.collection.length;
     }
 
     get_max() {
