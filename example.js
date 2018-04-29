@@ -7,8 +7,10 @@ class IntegerTracker {
         this.obj = {};
         this.largest = 0;
         this.frequent = 0;
-        this.mean = 0;
         this.total = 0;
+        this.mean = 0;
+        this.max = Math.max();
+        this.min = Math.min();
     }
 
     track(int) {
@@ -19,16 +21,19 @@ class IntegerTracker {
         }
         this.total += int;
         this.collection.push(int);
-        this.collection.sort();
         this.mean = this.total / this.collection.length;
+        if (int > this.max) 
+            this.max = int;
+        if (int < this.min) 
+            this.min = int;
     }
 
     get_max() {
-        return this.collection.slice(this.collection.length - 1);
+        return this.max;
     }
 
     get_min() {
-        return this.collection.slice(0,1);
+        return this.min;
     }
 
     get_mean() {
